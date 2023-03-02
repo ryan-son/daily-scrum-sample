@@ -20,7 +20,7 @@ final class EditDailyScrumModel: ObservableObject {
 
   init(
     dailyScrum: DailyScrum,
-    focus: Field? = nil
+    focus: Field? = .title
   ) {
     self.dailyScrum = dailyScrum
     self.focus = focus
@@ -45,6 +45,7 @@ final class EditDailyScrumModel: ObservableObject {
   func addAttendeeButtonTapped() {
     let newAttendee = Attendee(id: Attendee.ID(UUID()), name: "")
     self.dailyScrum.attendees.append(newAttendee)
+    self.focus = .attendee(newAttendee.id)
   }
 }
 
@@ -92,9 +93,6 @@ struct EditDailyScrumView: View {
       }
     }
     .navigationTitle(self.model.dailyScrum.title)
-    .onAppear {
-      self.focus = .title
-    }
   }
 }
 

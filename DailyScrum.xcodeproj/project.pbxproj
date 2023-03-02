@@ -17,6 +17,7 @@
 		AA41058929AB3F5F00EF760A /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = AA41058829AB3F5F00EF760A /* Tagged */; };
 		AA41058C29AB419700EF760A /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = AA41058B29AB419700EF760A /* SwiftUINavigation */; };
 		AA41058E29AB460400EF760A /* EditDailyScrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41058D29AB460400EF760A /* EditDailyScrum.swift */; };
+		AAF1004929B4C53700460C6F /* EditDailyScrumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1004829B4C53700460C6F /* EditDailyScrumTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		AA41058329AB3E8700EF760A /* CodeSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSnippet.swift; sourceTree = "<group>"; };
 		AA41058529AB3EF500EF760A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		AA41058D29AB460400EF760A /* EditDailyScrum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDailyScrum.swift; sourceTree = "<group>"; };
+		AAF1004829B4C53700460C6F /* EditDailyScrumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDailyScrumTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				AA41056A29AB3E2F00EF760A /* DailyScrumTests.swift */,
+				AAF1004829B4C53700460C6F /* EditDailyScrumTests.swift */,
 			);
 			path = DailyScrumTests;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF1004929B4C53700460C6F /* EditDailyScrumTests.swift in Sources */,
 				AA41056B29AB3E2F00EF760A /* DailyScrumTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
