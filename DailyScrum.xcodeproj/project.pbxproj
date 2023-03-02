@@ -83,10 +83,10 @@
 		AA41055829AB3E2D00EF760A /* DailyScrum */ = {
 			isa = PBXGroup;
 			children = (
+				AAF1004429B4C53700460C6F /* EditDailyScrum */,
+				AAF1004329B4C53700460C6F /* DailyScrumList */,
 				AA41055929AB3E2D00EF760A /* DailyScrumApp.swift */,
 				AA41058529AB3EF500EF760A /* Models.swift */,
-				AA41055B29AB3E2D00EF760A /* DailyScrumListView.swift */,
-				AA41058D29AB460400EF760A /* EditDailyScrum.swift */,
 				AA41058329AB3E8700EF760A /* CodeSnippet.swift */,
 				AA41055D29AB3E2F00EF760A /* Assets.xcassets */,
 				AA41055F29AB3E2F00EF760A /* Preview Content */,
@@ -108,6 +108,22 @@
 				AA41056A29AB3E2F00EF760A /* DailyScrumTests.swift */,
 			);
 			path = DailyScrumTests;
+			sourceTree = "<group>";
+		};
+		AAF1004329B4C53700460C6F /* DailyScrumList */ = {
+			isa = PBXGroup;
+			children = (
+				AA41055B29AB3E2D00EF760A /* DailyScrumListView.swift */,
+			);
+			path = DailyScrumList;
+			sourceTree = "<group>";
+		};
+		AAF1004429B4C53700460C6F /* EditDailyScrum */ = {
+			isa = PBXGroup;
+			children = (
+				AA41058D29AB460400EF760A /* EditDailyScrum.swift */,
+			);
+			path = EditDailyScrum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
