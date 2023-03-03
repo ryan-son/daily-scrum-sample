@@ -18,6 +18,7 @@
 		AA41058C29AB419700EF760A /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = AA41058B29AB419700EF760A /* SwiftUINavigation */; };
 		AA41058E29AB460400EF760A /* EditDailyScrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41058D29AB460400EF760A /* EditDailyScrum.swift */; };
 		AAF1004929B4C53700460C6F /* EditDailyScrumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1004829B4C53700460C6F /* EditDailyScrumTests.swift */; };
+		AAF1004C29B4C53700460C6F /* DailyScrumDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1004B29B4C53700460C6F /* DailyScrumDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		AA41058529AB3EF500EF760A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		AA41058D29AB460400EF760A /* EditDailyScrum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDailyScrum.swift; sourceTree = "<group>"; };
 		AAF1004829B4C53700460C6F /* EditDailyScrumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDailyScrumTests.swift; sourceTree = "<group>"; };
+		AAF1004B29B4C53700460C6F /* DailyScrumDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScrumDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		AA41055829AB3E2D00EF760A /* DailyScrum */ = {
 			isa = PBXGroup;
 			children = (
+				AAF1004A29B4C53700460C6F /* DailyScrumDetail */,
 				AAF1004429B4C53700460C6F /* EditDailyScrum */,
 				AAF1004329B4C53700460C6F /* DailyScrumList */,
 				AA41055929AB3E2D00EF760A /* DailyScrumApp.swift */,
@@ -127,6 +130,14 @@
 				AA41058D29AB460400EF760A /* EditDailyScrum.swift */,
 			);
 			path = EditDailyScrum;
+			sourceTree = "<group>";
+		};
+		AAF1004A29B4C53700460C6F /* DailyScrumDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AAF1004B29B4C53700460C6F /* DailyScrumDetail.swift */,
+			);
+			path = DailyScrumDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +253,7 @@
 				AA41058E29AB460400EF760A /* EditDailyScrum.swift in Sources */,
 				AA41055A29AB3E2D00EF760A /* DailyScrumApp.swift in Sources */,
 				AA41058629AB3EF500EF760A /* Models.swift in Sources */,
+				AAF1004C29B4C53700460C6F /* DailyScrumDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
