@@ -14,6 +14,7 @@ final class DailyScrumListModel: ObservableObject {
 
   enum Destination {
     case add(EditDailyScrumModel)
+    case detail(DailyScrumDetailModel)
   }
 
   init(
@@ -42,6 +43,12 @@ final class DailyScrumListModel: ObservableObject {
     dailyScrums.append(editModel.dailyScrum)
     self.destination = nil
   }
+
+  func dailyScrumTapped(_ dailyScrum: DailyScrum) {
+    self.destination = .detail(
+      DailyScrumDetailModel(dailyScrum: dailyScrum)
+    )
+  }
 }
 
 struct DailyScrumListView: View {
@@ -51,7 +58,11 @@ struct DailyScrumListView: View {
     NavigationStack {
       List {
         ForEach(self.$model.dailyScrums) { $dailyScrum in
-          CardView(dailyScrum: dailyScrum)
+          Button {
+            self.model.dailyScrumTapped(dailyScrum)
+          } label: {
+            CardView(dailyScrum: dailyScrum)
+          }
         }
       }
       .navigationTitle("Daily Scrums List")
@@ -81,6 +92,12 @@ struct DailyScrumListView: View {
               }
             }
         }
+      }
+      .navigationDestination(
+        unwrapping: self.$model.destination,
+        case: /DailyScrumListModel.Destination.detail
+      ) { $detailModel in
+        DailyScrumDetailView(model: detailModel)
       }
     }
   }
@@ -132,12 +149,12 @@ struct DailyScrumListView_Previews: PreviewProvider {
   static var previews: some View {
     DailyScrumListView(
       model: DailyScrumListModel(
-        destination: .add(
-          EditDailyScrumModel(
-            dailyScrum: .mock,
-            focus: .attendee(DailyScrum.mock.attendees[3].id)
-          )
-        ),
+//        destination: .add(
+//          EditDailyScrumModel(
+//            dailyScrum: .mock,
+//            focus: .attendee(DailyScrum.mock.attendees[3].id)
+//          )
+//        ),
         dailyScrums: [.mock]
       )
     )
