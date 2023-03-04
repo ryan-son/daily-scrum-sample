@@ -149,11 +149,8 @@ struct DailyScrumListView_Previews: PreviewProvider {
   static var previews: some View {
     DailyScrumListView(
       model: DailyScrumListModel(
-//        destination: .add(
-//          EditDailyScrumModel(
-//            dailyScrum: .mock,
-//            focus: .attendee(DailyScrum.mock.attendees[3].id)
-//          )
+//        destination: .detail(
+//          DailyScrumDetailModel(dailyScrum: .mock)
 //        ),
         dailyScrums: [.mock]
       )

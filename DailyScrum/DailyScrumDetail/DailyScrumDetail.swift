@@ -6,12 +6,28 @@
 //
 
 import SwiftUI
+import SwiftUINavigation
 
 final class DailyScrumDetailModel: ObservableObject {
+  @Published var destination: Destination?
   @Published var dailyScrum: DailyScrum
 
-  init(dailyScrum: DailyScrum) {
+  enum Destination {
+    case edit(EditDailyScrumModel)
+  }
+
+  init(
+    destination: Destination? = nil,
+    dailyScrum: DailyScrum
+  ) {
+    self.destination = destination
     self.dailyScrum = dailyScrum
+  }
+
+  func editButtonTapped() {
+    self.destination = .edit(
+      EditDailyScrumModel(dailyScrum: self.dailyScrum)
+    )
   }
 }
 
@@ -34,9 +50,7 @@ struct DailyScrumDetailView: View {
         HStack {
           Label("Length", systemImage: "clock")
           Spacer()
-          Text(self.model.dailyScrum.duration.formatted(
-            .units())
-          )
+          Text(self.model.dailyScrum.duration.formatted(.units()))
         }
 
         HStack {
@@ -91,6 +105,15 @@ struct DailyScrumDetailView: View {
     .navigationTitle(self.model.dailyScrum.title)
     .toolbar {
       Button("Edit") {
+        self.model.editButtonTapped()
+      }
+    }
+    .sheet(
+      unwrapping: self.$model.destination,
+      case: /DailyScrumDetailModel.Destination.edit
+    ) { $editModel in
+      NavigationStack {
+        EditDailyScrumView(model: editModel)
       }
     }
   }
@@ -101,6 +124,7 @@ struct DailyScrumDetailView_Previews: PreviewProvider {
     NavigationStack {
       DailyScrumDetailView(
         model: DailyScrumDetailModel(
+          destination: .edit(EditDailyScrumModel(dailyScrum: .mock)),
           dailyScrum: .mock
         )
       )
