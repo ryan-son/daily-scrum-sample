@@ -5,12 +5,17 @@
 //  Created by Geonhee on 2023/02/26.
 //
 
+import Combine
 import SwiftUI
 import SwiftUINavigation
 
 final class DailyScrumListModel: ObservableObject {
   @Published var dailyScrums: [DailyScrum] = []
-  @Published var destination: Destination?
+  @Published var destination: Destination? {
+    didSet { self.bind() }
+  }
+
+  private var destinationCancellable: AnyCancellable?
 
   enum Destination {
     case add(EditDailyScrumModel)
@@ -23,6 +28,7 @@ final class DailyScrumListModel: ObservableObject {
   ) {
     self.destination = destination
     self.dailyScrums = dailyScrums
+    self.bind()
   }
 
   func addDailyScrumButtonTapped() {
@@ -48,6 +54,21 @@ final class DailyScrumListModel: ObservableObject {
     self.destination = .detail(
       DailyScrumDetailModel(dailyScrum: dailyScrum)
     )
+  }
+
+  func bind() {
+    switch self.destination {
+    case let .detail(detailModel):
+      self.destinationCancellable = detailModel.$dailyScrum
+        .debounce(for: 1, scheduler: DispatchQueue.main)
+        .sink { [weak self] dailyScrum in
+          guard let index = self?.dailyScrums.firstIndex(where: { $0.id == dailyScrum.id }) else { return }
+          self?.dailyScrums[index] = dailyScrum
+        }
+
+    case .add, .none:
+      break
+    }
   }
 }
 
