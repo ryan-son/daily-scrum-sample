@@ -14,6 +14,7 @@ final class DailyScrumDetailModel: ObservableObject {
 
   enum Destination {
     case edit(EditDailyScrumModel)
+    case meeting(Meeting)
   }
 
   init(
@@ -28,6 +29,10 @@ final class DailyScrumDetailModel: ObservableObject {
     self.destination = .edit(
       EditDailyScrumModel(dailyScrum: self.dailyScrum)
     )
+  }
+
+  func meetingTapped(_ meeting: Meeting) {
+    self.destination = .meeting(meeting)
   }
 }
 
@@ -72,6 +77,7 @@ struct DailyScrumDetailView: View {
         Section {
           ForEach(self.model.dailyScrum.meetings) { meeting in
             Button {
+              self.model.meetingTapped(meeting)
             } label: {
               HStack {
                 Image(systemName: "calendar")
@@ -116,6 +122,12 @@ struct DailyScrumDetailView: View {
         EditDailyScrumView(model: editModel)
       }
     }
+    .navigationDestination(
+      unwrapping: self.$model.destination,
+      case: /DailyScrumDetailModel.Destination.meeting
+    ) { $meeting in
+      MeetingView(meeting: meeting, dailyScrum: self.model.dailyScrum)
+    }
   }
 }
 
@@ -124,7 +136,7 @@ struct DailyScrumDetailView_Previews: PreviewProvider {
     NavigationStack {
       DailyScrumDetailView(
         model: DailyScrumDetailModel(
-          destination: .edit(EditDailyScrumModel(dailyScrum: .mock)),
+          destination: .meeting(DailyScrum.mock.meetings[0]),
           dailyScrum: .mock
         )
       )
