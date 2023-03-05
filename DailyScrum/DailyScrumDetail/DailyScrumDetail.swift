@@ -31,6 +31,16 @@ final class DailyScrumDetailModel: ObservableObject {
     )
   }
 
+  func editCancelButtonTapped() {
+    self.destination = nil
+  }
+
+  func editDoneButtonTapped() {
+    guard case let .edit(editModel) = destination else { return }
+    self.dailyScrum = editModel.dailyScrum
+    self.destination = nil
+  }
+
   func meetingTapped(_ meeting: Meeting) {
     self.destination = .meeting(meeting)
   }
@@ -120,6 +130,18 @@ struct DailyScrumDetailView: View {
     ) { $editModel in
       NavigationStack {
         EditDailyScrumView(model: editModel)
+          .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+              Button("Cancel") {
+                self.model.editCancelButtonTapped()
+              }
+            }
+            ToolbarItem(placement: .confirmationAction) {
+              Button("Done") {
+                self.model.editDoneButtonTapped()
+              }
+            }
+          }
       }
     }
     .navigationDestination(
@@ -136,7 +158,9 @@ struct DailyScrumDetailView_Previews: PreviewProvider {
     NavigationStack {
       DailyScrumDetailView(
         model: DailyScrumDetailModel(
-          destination: .meeting(DailyScrum.mock.meetings[0]),
+          destination: .edit(
+            EditDailyScrumModel(dailyScrum: .mock)
+          ),
           dailyScrum: .mock
         )
       )
